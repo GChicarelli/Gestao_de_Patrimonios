@@ -1,0 +1,11 @@
+Ideias do projeto semestral - controle dos patrimônios 
+
+- Adicionar uma regra em aplicativos (API) de horário de responsabilidade, onde cada usuário possua seu período de responsabilidade pelos patrimônios, alterando automaticamente para outro ao mudar de turno (horário). 
+
+- A custodia fica vinculada ao usuário, não a uma tabela custodia. Assim ao procurar um patrimônio, ele não vincularia a local ou uma tabela custodia, ele já procura pelo usuário, facilitando achar o patrimônio. 
+
+- Busca por área, patrimônio e usuário.
+
+
+Redes2026	
+Seduc@2026
