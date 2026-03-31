@@ -1,4 +1,4 @@
-﻿namespace GestaoPatrimonios.Exceptions
+﻿namespace GestaoDePatrimonios.Exceptions
 {
     public class DomainException : Exception
     {

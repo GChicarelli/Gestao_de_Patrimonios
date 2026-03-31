@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GestaoPatrimonios.Domains;
+namespace GestaoDePatrimonios.Domains;
 
 public partial class Usuario
 {
@@ -28,6 +28,8 @@ public partial class Usuario
     public Guid CargoID { get; set; }
 
     public Guid TipoUsuarioID { get; set; }
+
+    public bool PrimeiroAcesso { get; set; }
 
     public virtual Cargo Cargo { get; set; } = null!;
 

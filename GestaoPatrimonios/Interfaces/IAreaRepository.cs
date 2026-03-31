@@ -1,6 +1,6 @@
-﻿using GestaoPatrimonios.Domains;
+﻿using GestaoDePatrimonios.Domains;
 
-namespace GestaoPatrimonios.Interfaces
+namespace GestaoDePatrimonios.Interfaces
 {
     public interface IAreaRepository
     {

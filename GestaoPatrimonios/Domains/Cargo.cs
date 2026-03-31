@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GestaoPatrimonios.Domains;
+namespace GestaoDePatrimonios.Domains;
 
 public partial class Cargo
 {

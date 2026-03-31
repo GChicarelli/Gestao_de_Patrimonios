@@ -1,4 +1,4 @@
-﻿namespace GestaoPatrimonios.DTOs.AreaDto
+﻿namespace GestaoDePatrimonios.DTOs.AreaDto
 {
     public class ListarAreaDto
     {

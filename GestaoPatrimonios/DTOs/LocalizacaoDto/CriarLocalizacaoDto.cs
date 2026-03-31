@@ -1,4 +1,4 @@
-﻿namespace GestaoPatrimonios.DTOs.LocalizacaoDto
+﻿namespace GestaoDePatrimonios.DTOs.LocalizacaoDto
 {
     public class CriarLocalizacaoDto
     {

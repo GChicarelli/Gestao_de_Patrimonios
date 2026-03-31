@@ -1,14 +1,14 @@
-﻿using GestaoPatrimonios.Contexts;
-using GestaoPatrimonios.Domains;
-using GestaoPatrimonios.Interfaces;
+﻿using GestaoDePatrimonios.Contexts;
+using GestaoDePatrimonios.Domains;
+using GestaoDePatrimonios.Interfaces;
 
-namespace GestaoPatrimonios.Repositories
+namespace GestaoDePatrimonios.Repositories
 {
     public class AreaRepository : IAreaRepository
     {
-        private readonly GestaoPatrimoniosContext _context;
+        private readonly GestaoDePatrimoniosContext _context;
 
-        public AreaRepository(GestaoPatrimoniosContext context)
+        public AreaRepository(GestaoDePatrimoniosContext context)
         {
             _context = context;
         }
@@ -36,7 +36,7 @@ namespace GestaoPatrimonios.Repositories
 
         public void Atualizar(Area area)
         {
-            if(area == null)
+            if (area == null)
             {
                 return;
             }

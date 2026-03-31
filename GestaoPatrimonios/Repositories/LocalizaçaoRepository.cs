@@ -1,22 +1,22 @@
-﻿using GestaoPatrimonios.Contexts;
-using GestaoPatrimonios.Domains;
-using GestaoPatrimonios.DTOs.LocalizacaoDto;
-using GestaoPatrimonios.Interfaces;
+﻿using GestaoDePatrimonios.Contexts;
+using GestaoDePatrimonios.Domains;
+using GestaoDePatrimonios.Interfaces;
 
-namespace GestaoPatrimonios.Repositories
+namespace GestaoDePatrimonios.Repositories
 {
     public class LocalizacaoRepository : ILocalizacaoRepository
     {
-        private readonly GestaoPatrimoniosContext _context;
+        private readonly GestaoDePatrimoniosContext _context;
 
-        public LocalizacaoRepository(GestaoPatrimoniosContext context)
+        public LocalizacaoRepository(GestaoDePatrimoniosContext context)
         {
             _context = context;
         }
 
         public List<Localizacao> Listar()
         {
-            return _context.Localizacao.OrderBy(local => local.NomeLocal).ToList();
+            return _context.Localizacao
+                .OrderBy(localizacao => localizacao.NomeLocal).ToList();
         }
 
         public Localizacao BuscarPorId(Guid localizacaoId)
@@ -33,6 +33,33 @@ namespace GestaoPatrimonios.Repositories
         public bool AreaExiste(Guid areaId)
         {
             return _context.Area.Any(area => area.AreaID == areaId);
+        }
+
+        public void Atualizar(Localizacao localizacao)
+        {
+            if (localizacao == null)
+            {
+                return;
+            }
+
+            Localizacao localizacaoBanco = _context.Localizacao.Find(localizacao.LocalizacaoID);
+
+            if (localizacaoBanco == null)
+            {
+                return;
+            }
+
+            localizacaoBanco.NomeLocal = localizacao.NomeLocal;
+            localizacaoBanco.LocalSAP = localizacao.LocalSAP;
+            localizacaoBanco.DescricaoSAP = localizacao.DescricaoSAP;
+            localizacaoBanco.AreaID = localizacao.AreaID;
+
+            _context.SaveChanges();
+        }
+
+        public Localizacao BuscarPorNome(string nomeLocal, Guid areaID)
+        {
+            throw new NotImplementedException();
         }
     }
 }

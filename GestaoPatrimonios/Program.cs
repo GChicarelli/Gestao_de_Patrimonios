@@ -1,8 +1,8 @@
 using DotNetEnv;
-using GestaoPatrimonios.Applications.Services;
-using GestaoPatrimonios.Contexts;
-using GestaoPatrimonios.Interfaces;
-using GestaoPatrimonios.Repositories;
+using GestaoDePatrimonios.Applications.Services;
+using GestaoDePatrimonios.Contexts;
+using GestaoDePatrimonios.Interfaces;
+using GestaoDePatrimonios.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +14,7 @@ Env.Load();
 string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
 // Conexão com banco
-builder.Services.AddDbContext<GestaoPatrimoniosContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<GestaoDePatrimoniosContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
 
@@ -27,7 +27,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAreaRepository, AreaRepository>();
 builder.Services.AddScoped<AreaService>();
 
-//Localizacao
+// Localizações 
 builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
 builder.Services.AddScoped<LocalizacaoService>();
 

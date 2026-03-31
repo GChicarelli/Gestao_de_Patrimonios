@@ -1,6 +1,6 @@
-﻿using GestaoPatrimonios.Domains;
+﻿using GestaoDePatrimonios.Domains;
 
-namespace GestaoPatrimonios.Interfaces
+namespace GestaoDePatrimonios.Interfaces
 {
     public interface ILocalizacaoRepository
     {
@@ -13,5 +13,7 @@ namespace GestaoPatrimonios.Interfaces
         bool AreaExiste(Guid areaId);
 
         public void Atualizar(Localizacao localizacao);
+
+        Localizacao BuscarPorNome(string nomeLocal, Guid areaID);
     }
 }

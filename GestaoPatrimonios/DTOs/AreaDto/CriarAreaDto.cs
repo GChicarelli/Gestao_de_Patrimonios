@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GestaoPatrimonios.DTOs.AreaDto
+namespace GestaoDePatrimonios.DTOs.AreaDto
 {
     public class CriarAreaDto
     {
