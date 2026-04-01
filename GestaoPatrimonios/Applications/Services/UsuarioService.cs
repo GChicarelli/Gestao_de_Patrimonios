@@ -1,15 +1,15 @@
 ﻿using GestaoDePatrimonios.Domains;
-using GestaoPatrimonios.Domains;
-using GestaoPatrimonios.DTOs.UsuarioDto;
-using GestaoPatrimonios.Repositories;
+using GestaoDePatrimonios.Interfaces;
+using GestaoDePatrimonios.DTOs.UsuarioDto;
 
-namespace GestaoPatrimonios.Applications.Services
+
+namespace GestaoDePatrimonios.Applications.Services
 {
     public class UsuarioService
     {
-        private readonly UsuarioRepository _repository;
+        private readonly IUsuarioRepository _repository;
 
-        public UsuarioService(UsuarioRepository repository)
+        public UsuarioService(IUsuarioRepository repository)
         {
             _repository = repository;
         }
@@ -22,7 +22,7 @@ namespace GestaoPatrimonios.Applications.Services
             {
                 UsuarioID = usuario.UsuarioID,
                 NIF = usuario.NIF,
-                NomeUsuario = usuario.NomeUsuario,
+                Nome = usuario.Nome,
                 RG = usuario.RG,
                 CPF = usuario.CPF,
                 CarteiraTrabalho = usuario.CarteiraTrabalho,

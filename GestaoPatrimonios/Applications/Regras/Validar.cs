@@ -1,4 +1,5 @@
 ﻿using GestaoDePatrimonios.Exceptions;
+using GestaoDePatrimonios.Exceptions;
 
 namespace GestaoDePatrimonios.Applications.Regras
 {
@@ -17,6 +18,14 @@ namespace GestaoDePatrimonios.Applications.Regras
             if (string.IsNullOrWhiteSpace(estado))
             {
                 throw new DomainException("Estado é obrigatório.");
+            }
+        }
+
+        public static void ValidarLogradouro(string logradouro)
+        {
+            if (string.IsNullOrWhiteSpace(logradouro))
+            {
+                throw new DomainException("Logradouro é obrigatório.");
             }
         }
     }

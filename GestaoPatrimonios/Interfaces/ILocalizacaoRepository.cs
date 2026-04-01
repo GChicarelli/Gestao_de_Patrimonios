@@ -4,16 +4,11 @@ namespace GestaoDePatrimonios.Interfaces
 {
     public interface ILocalizacaoRepository
     {
-        List<Localizacao> Listar();
-
-        Localizacao BuscarPorId(Guid localizacaoId);
-
-        void Adicionar(Localizacao localizacao);
-
-        bool AreaExiste(Guid areaId);
-
-        public void Atualizar(Localizacao localizacao);
-
-        Localizacao BuscarPorNome(string nomeLocal, Guid areaID);
+       public List<Localizacao> Listar();
+       public Localizacao BuscarPorId(Guid localizacaoId);
+       public void Adicionar(Localizacao localizacao);
+       public bool AreaExiste(Guid areaId);
+       public void Atualizar(Localizacao localizacao);
+       public Localizacao BuscarPorNome(string nomeLocal, Guid areaId);
     }
 }

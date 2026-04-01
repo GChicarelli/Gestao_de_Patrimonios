@@ -1,8 +1,9 @@
-﻿using GestaoDePatrimonios.Applications.Regras;
-using GestaoDePatrimonios.Domains;
+﻿using GestaoDePatrimonios.Domains;
 using GestaoDePatrimonios.DTOs.LocalizacaoDto;
 using GestaoDePatrimonios.Exceptions;
 using GestaoDePatrimonios.Interfaces;
+using GestaoDePatrimonios.Applications.Regras;
+
 
 namespace GestaoDePatrimonios.Applications.Services
 {

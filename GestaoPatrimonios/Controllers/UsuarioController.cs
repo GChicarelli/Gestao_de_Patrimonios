@@ -1,14 +1,14 @@
-﻿using GestaoPatrimonios.Applications.Services;
-using Microsoft.AspNetCore.Http;
+﻿using GestaoDePatrimonios.Applications.Services;
+using GestaoDePatrimonios.DTOs.UsuarioDto;
+
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestaoPatrimonios.Controllers
+namespace GestaoDePatrimonios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-
         private readonly UsuarioService _service;
 
         public UsuarioController(UsuarioService service)
@@ -17,7 +17,10 @@ namespace GestaoPatrimonios.Controllers
         }
 
         [HttpGet]
-
-        public ActionResult
+        public ActionResult<List<ListarUsuarioDto>> Listar()
+        {
+            List<ListarUsuarioDto> usuarios = _service.Listar();
+            return Ok(usuarios);
+        }
     }
 }

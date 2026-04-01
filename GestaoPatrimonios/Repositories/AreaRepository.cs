@@ -2,6 +2,7 @@
 using GestaoDePatrimonios.Domains;
 using GestaoDePatrimonios.Interfaces;
 
+
 namespace GestaoDePatrimonios.Repositories
 {
     public class AreaRepository : IAreaRepository

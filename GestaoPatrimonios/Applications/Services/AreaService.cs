@@ -1,9 +1,9 @@
-﻿using GestaoDePatrimonios.Applications.Regras;
-using GestaoDePatrimonios.Domains;
+﻿using GestaoDePatrimonios.Domains;
 using GestaoDePatrimonios.DTOs.AreaDto;
 using GestaoDePatrimonios.Exceptions;
 using GestaoDePatrimonios.Interfaces;
-using System.Collections.Immutable;
+using GestaoDePatrimonios.Applications.Regras;
+
 
 namespace GestaoDePatrimonios.Applications.Services
 {

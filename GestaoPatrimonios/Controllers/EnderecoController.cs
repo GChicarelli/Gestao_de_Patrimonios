@@ -1,35 +1,38 @@
-﻿using GestaoDePatrimonios.Applications.Services;
-using GestaoDePatrimonios.DTOs.Bairro;
-using GestaoDePatrimonios.Exceptions;
+﻿using GestaoDePatrimonios.Exceptions;
+using GestaoDePatrimonios.Applications.Services;
+using GestaoDePatrimonios_v1.DTOs.EnderecoDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoDePatrimonios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BairroController : ControllerBase
+    public class EnderecoController : ControllerBase
     {
-        private readonly BairroService _service;
+        private readonly EnderecoService _service;
 
-        public BairroController(BairroService service)
+        public EnderecoController(EnderecoService service)
         {
             _service = service;
         }
 
+        [Authorize]
         [HttpGet]
-        public ActionResult<List<ListarBairroDto>> Listar()
+        public ActionResult<List<ListarEnderecoDto>> Listar()
         {
-            List<ListarBairroDto> bairros = _service.Listar();
-
-            return Ok(bairros);
+            List<ListarEnderecoDto> enderecos = _service.Listar();
+            return Ok(enderecos);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
-        public ActionResult<ListarBairroDto> BuscarPorId(Guid id)
+        public ActionResult<ListarEnderecoDto> BuscarPorId(Guid id)
         {
             try
             {
-                return Ok(_service.BuscarPorId(id));
+                ListarEnderecoDto endereco = _service.BuscarPorId(id);
+                return Ok(endereco);
             }
             catch (DomainException ex)
             {
@@ -37,8 +40,9 @@ namespace GestaoDePatrimonios.Controllers
             }
         }
 
+        [Authorize(Roles = "Coordenador")]
         [HttpPost]
-        public ActionResult Adicionar(CriarBairroDto dto)
+        public ActionResult Adicionar(CriarEnderecoDto dto)
         {
             try
             {
@@ -51,8 +55,9 @@ namespace GestaoDePatrimonios.Controllers
             }
         }
 
+        [Authorize(Roles = "Coordenador")]
         [HttpPut("{id}")]
-        public ActionResult Atualizar(Guid id, CriarBairroDto dto)
+        public ActionResult Atualizar(Guid id, CriarEnderecoDto dto)
         {
             try
             {

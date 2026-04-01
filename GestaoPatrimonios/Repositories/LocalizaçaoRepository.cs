@@ -1,5 +1,6 @@
 ﻿using GestaoDePatrimonios.Contexts;
 using GestaoDePatrimonios.Domains;
+
 using GestaoDePatrimonios.Interfaces;
 
 namespace GestaoDePatrimonios.Repositories
@@ -57,9 +58,11 @@ namespace GestaoDePatrimonios.Repositories
             _context.SaveChanges();
         }
 
-        public Localizacao BuscarPorNome(string nomeLocal, Guid areaID)
+        public Localizacao BuscarPorNome(string nomeLocal, Guid areaId)
         {
-            throw new NotImplementedException();
+
+            return _context.Localizacao.FirstOrDefault(local => local.NomeLocal.ToLower() == nomeLocal.ToLower() && local.AreaID == areaId
+            );
         }
     }
 }

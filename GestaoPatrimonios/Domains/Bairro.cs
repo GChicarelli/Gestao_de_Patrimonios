@@ -5,6 +5,7 @@ namespace GestaoDePatrimonios.Domains;
 
 public partial class Bairro
 {
+
     public Guid BairroID { get; set; }
 
     public string NomeBairro { get; set; } = null!;

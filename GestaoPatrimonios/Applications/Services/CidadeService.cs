@@ -1,9 +1,9 @@
-﻿using GestaoDePatrimonios.Applications.Regras;
-using GestaoDePatrimonios.Domains;
-using GestaoDePatrimonios.DTOs.AreaDto;
+﻿using GestaoDePatrimonios.Domains;
 using GestaoDePatrimonios.DTOs.CidadeDto;
 using GestaoDePatrimonios.Exceptions;
 using GestaoDePatrimonios.Interfaces;
+using GestaoDePatrimonios.Applications.Regras;
+
 
 namespace GestaoDePatrimonios.Applications.Services
 {
@@ -18,8 +18,6 @@ namespace GestaoDePatrimonios.Applications.Services
 
         public List<ListarCidadeDto> Listar()
         {
-            List<Cidade> areas = _repository.Listar();
-
             List<Cidade> cidades = _repository.Listar();
 
             List<ListarCidadeDto> cidadesDto = cidades.Select(cidade => new ListarCidadeDto
