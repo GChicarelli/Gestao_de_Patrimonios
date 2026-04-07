@@ -1,9 +1,8 @@
-﻿using GestaoDePatrimonios.Domains;
+﻿using GestaoDePatrimonios.Applications.Regras;
+using GestaoDePatrimonios.Domains;
 using GestaoDePatrimonios.DTOs.LocalizacaoDto;
 using GestaoDePatrimonios.Exceptions;
 using GestaoDePatrimonios.Interfaces;
-using GestaoDePatrimonios.Applications.Regras;
-
 
 namespace GestaoDePatrimonios.Applications.Services
 {
@@ -36,7 +35,7 @@ namespace GestaoDePatrimonios.Applications.Services
         {
             Localizacao localizacao = _repository.BuscarPorId(localizacaoId);
 
-            if (localizacao == null)
+            if(localizacao == null)
             {
                 throw new DomainException("Localização não encontrada");
             }
@@ -86,7 +85,7 @@ namespace GestaoDePatrimonios.Applications.Services
 
             Localizacao localizacaoBanco = _repository.BuscarPorId(localizacaoId);
 
-            if (localizacaoBanco == null)
+            if(localizacaoBanco == null)
             {
                 throw new DomainException("Localização não encontrada.");
             }

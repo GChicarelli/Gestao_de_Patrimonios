@@ -1,6 +1,7 @@
-﻿using GestaoDePatrimonios.DTOs.AreaDto;
+﻿using GestaoDePatrimonios.Applications.Services;
+using GestaoDePatrimonios.DTOs.AreaDto;
 using GestaoDePatrimonios.Exceptions;
-using GestaoDePatrimonios.Applications.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoDePatrimonios.Controllers
@@ -61,7 +62,7 @@ namespace GestaoDePatrimonios.Controllers
                 _service.Atualizar(id, dto);
                 return NoContent();
             }
-            catch (DomainException ex)
+            catch(DomainException ex)
             {
                 return BadRequest(ex.Message);
             }

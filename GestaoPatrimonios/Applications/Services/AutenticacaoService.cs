@@ -1,0 +1,90 @@
+﻿using GestaoDePatrimonios.Applications.Autenticacao;
+using GestaoDePatrimonios.Applications.Regras;
+using GestaoDePatrimonios.Domains;
+using GestaoDePatrimonios.DTOs.AutenticacaoDto;
+using GestaoDePatrimonios.Exceptions;
+using GestaoDePatrimonios.Interfaces;
+using GestaoPatrimonios.Applications.Autenticacao;
+
+namespace GestaoPatrimonios.Applications.Services
+{
+    public class AutenticacaoService
+    {
+        private static IEnumerable<byte> senhaHashBanco;
+        private readonly IUsuarioRepository _repository;
+        private readonly GeradorTokenJwt _tokenJwt;
+
+        public AutenticacaoService(IUsuarioRepository repository, GeradorTokenJwt tokenJwt)
+        {
+            _repository = repository;
+            _tokenJwt = tokenJwt;
+        }
+
+        private static bool VerificarSenha(string senhaDigitada, byte[] senhaHashBenco)
+        {
+            var hashDigitado = CriptografiaUsuario.CriptografarSenha(senhaDigitada);
+
+            return hashDigitado.SequenceEqual(senhaHashBanco);
+        }
+
+        public TokenDto Login(LoginDto loginDto)
+        {
+            Usuario usuario = _repository.ObterPorNIFComTipoUsuario(loginDto.NIF);
+
+            if(usuario == null)
+            {
+                throw new DomainException("NIF ou senha inválidos");
+            }
+
+            if(usuario.Ativo == false)
+            {
+                throw new DomainException("Usuário inativo");
+            }
+
+            if (!VerificarSenha(loginDto.Senha, usuario.Senha))
+            {
+                throw new DomainException("NIF ou senha inválidos.");
+            }
+
+            string token = _tokenJwt.GerarToken(usuario);
+
+            token novoToken = new TokenDto
+            {
+                Token = token,
+                PrimeiroAcesso = usuario.PrimeiroAcesso
+                TipoUsuario = usuario.TipoUsuario.NomeTipo
+            };
+
+            return novoToken;
+        }
+
+        public void TrocarPrimeiraSenha(Guid usuarioId, TrocarPrimeiraSenhaDto dto)
+        {
+            Validar.ValidarSenha(dto.SenhaAtual);
+            Validar.ValidarSenha(dto.NovaSenha);
+
+            Usuario usuario = _repository.BuscarPorId(usuarioId);
+
+            if (usuario == null)
+            {
+                throw new DomainException("Usuário não encontrado");
+            }
+
+            if (!VerificarSenha(dto.SenhaAtual, usuario.Senha))
+            {
+                throw new DomainException("Senha atual inválida");
+            }
+
+            if (dto.SenhaAtual == dto.NovaSenha)
+            {
+                throw new DomainException("A nova senha deve ser diferente da senha atual.");
+            }
+
+            usuario.Senha = CriptografiaUsuario.CriptografarSenha(dto.NovaSenha);
+            usuario.PrimeiroAcesso = false;
+
+            _repository.AtualizarSenha(usuario);
+            _repository.AtualizarPrimeiroAcesso(usuario);
+        }
+    }
+}

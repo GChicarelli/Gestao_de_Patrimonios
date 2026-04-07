@@ -1,6 +1,8 @@
 ﻿using GestaoDePatrimonios.Applications.Services;
 using GestaoDePatrimonios.DTOs.UsuarioDto;
-
+using GestaoDePatrimonios.Exceptions;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoDePatrimonios.Controllers
@@ -22,5 +24,64 @@ namespace GestaoDePatrimonios.Controllers
             List<ListarUsuarioDto> usuarios = _service.Listar();
             return Ok(usuarios);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<ListarUsuarioDto> BuscarPorId(Guid id)
+        {
+            try
+            {
+                ListarUsuarioDto usuario = _service.BuscarPorId(id);
+                return Ok(usuario);
+            } 
+            catch (DomainException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "Coordenador")]
+        [HttpPost]
+        public ActionResult Adicionar(CriarUsuarioDto dto)
+        {
+            try
+            {
+                _service.Adicionar(dto);
+                return Created();
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
+        [HttpPut("{id}")]
+        public ActionResult Atualizar(Guid id, CriarUsuarioDto dto)
+        {
+            try
+            {
+                _service.Atualizar(id, dto);
+                return NoContent();
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "Coordenador")]
+        [HttpPatch("{id}/status")]
+        public ActionResult AtualizarStatus(Guid id, AtualizarStatusUsuarioDto dto)
+        {
+            try
+            {
+                _service.AtualizarStatus(id, dto);
+                return NoContent();
+            }
+            catch(DomainException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

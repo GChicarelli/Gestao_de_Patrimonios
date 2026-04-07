@@ -1,6 +1,7 @@
 ﻿using GestaoDePatrimonios.Applications.Services;
 using GestaoDePatrimonios.DTOs.Bairro;
 using GestaoDePatrimonios.Exceptions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoDePatrimonios.Controllers
@@ -19,9 +20,7 @@ namespace GestaoDePatrimonios.Controllers
         [HttpGet]
         public ActionResult<List<ListarBairroDto>> Listar()
         {
-            List<ListarBairroDto> bairros = _service.Listar();
-
-            return Ok(bairros);
+            return Ok(_service.Listar());
         }
 
         [HttpGet("{id}")]

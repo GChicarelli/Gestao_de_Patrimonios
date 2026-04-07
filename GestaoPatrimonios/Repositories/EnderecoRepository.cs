@@ -1,6 +1,5 @@
 ﻿using GestaoDePatrimonios.Contexts;
 using GestaoDePatrimonios.Domains;
-
 using GestaoDePatrimonios.Interfaces;
 
 namespace GestaoDePatrimonios.Repositories

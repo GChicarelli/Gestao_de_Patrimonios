@@ -2,7 +2,6 @@
 using GestaoDePatrimonios.Domains;
 using GestaoDePatrimonios.Interfaces;
 
-
 namespace GestaoDePatrimonios.Repositories
 {
     public class AreaRepository : IAreaRepository
@@ -37,7 +36,7 @@ namespace GestaoDePatrimonios.Repositories
 
         public void Atualizar(Area area)
         {
-            if (area == null)
+            if(area == null)
             {
                 return;
             }

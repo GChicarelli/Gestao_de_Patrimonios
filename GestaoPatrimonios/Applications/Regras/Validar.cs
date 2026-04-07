@@ -1,5 +1,4 @@
 ﻿using GestaoDePatrimonios.Exceptions;
-using GestaoDePatrimonios.Exceptions;
 
 namespace GestaoDePatrimonios.Applications.Regras
 {
@@ -7,7 +6,7 @@ namespace GestaoDePatrimonios.Applications.Regras
     {
         public static void ValidarNome(string nome)
         {
-            if (string.IsNullOrWhiteSpace(nome))
+            if(string.IsNullOrWhiteSpace(nome))
             {
                 throw new DomainException("Nome é obrigatório");
             }
@@ -26,6 +25,38 @@ namespace GestaoDePatrimonios.Applications.Regras
             if (string.IsNullOrWhiteSpace(logradouro))
             {
                 throw new DomainException("Logradouro é obrigatório.");
+            }
+        }
+
+        public static void ValidarNIF(string nif)
+        {
+            if(string.IsNullOrWhiteSpace(nif))
+            {
+                throw new DomainException("NIF é obrigatório.");
+            }
+        }
+
+        public static void ValidarCPF(string cpf)
+        {
+            if(string.IsNullOrWhiteSpace(cpf))
+            {
+                throw new DomainException("CPF é obrigatório");
+            }
+        }
+
+        public static void ValidarEmail(string email)
+        {
+            if(string.IsNullOrWhiteSpace(email))
+            {
+                throw new DomainException("E-mail é obrigatório.");
+            }
+        }
+
+        public static void ValidarSenha (string senha)
+        {
+            if(string.IsNullOrEmpty(senha))
+            {
+                throw new DomainException("Senha é obrigatória");
             }
         }
     }

@@ -1,6 +1,6 @@
-﻿using GestaoDePatrimonios.Domains;
+﻿using GestaoDePatrimonios.Applications.Regras;
+using GestaoDePatrimonios.Domains;
 using GestaoDePatrimonios.Exceptions;
-using GestaoDePatrimonios.Applications.Regras;
 using GestaoDePatrimonios.Interfaces;
 using GestaoDePatrimonios_v1.DTOs.EnderecoDto;
 

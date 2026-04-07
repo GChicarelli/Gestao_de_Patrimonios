@@ -1,6 +1,5 @@
 ﻿using GestaoDePatrimonios.Domains;
 
-
 namespace GestaoDePatrimonios.Interfaces
 {
     public interface IEnderecoRepository

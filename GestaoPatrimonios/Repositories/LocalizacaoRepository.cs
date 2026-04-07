@@ -1,6 +1,5 @@
 ﻿using GestaoDePatrimonios.Contexts;
 using GestaoDePatrimonios.Domains;
-
 using GestaoDePatrimonios.Interfaces;
 
 namespace GestaoDePatrimonios.Repositories
@@ -17,7 +16,7 @@ namespace GestaoDePatrimonios.Repositories
         public List<Localizacao> Listar()
         {
             return _context.Localizacao
-                .OrderBy(localizacao => localizacao.NomeLocal).ToList();
+                .OrderBy(localizacao =>  localizacao.NomeLocal).ToList();
         }
 
         public Localizacao BuscarPorId(Guid localizacaoId)
@@ -38,14 +37,14 @@ namespace GestaoDePatrimonios.Repositories
 
         public void Atualizar(Localizacao localizacao)
         {
-            if (localizacao == null)
+            if(localizacao == null)
             {
                 return;
             }
 
             Localizacao localizacaoBanco = _context.Localizacao.Find(localizacao.LocalizacaoID);
 
-            if (localizacaoBanco == null)
+            if(localizacaoBanco == null)
             {
                 return;
             }

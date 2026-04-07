@@ -1,7 +1,8 @@
-﻿using GestaoDePatrimonios.Exceptions;
-using GestaoDePatrimonios.Applications.Services;
+﻿using GestaoDePatrimonios.Applications.Services;
+using GestaoDePatrimonios.Exceptions;
 using GestaoDePatrimonios_v1.DTOs.EnderecoDto;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoDePatrimonios.Controllers

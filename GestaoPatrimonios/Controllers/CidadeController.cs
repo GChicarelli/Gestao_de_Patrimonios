@@ -1,9 +1,11 @@
 ﻿using GestaoDePatrimonios.Applications.Services;
+using GestaoDePatrimonios.DTOs.AreaDto;
 using GestaoDePatrimonios.DTOs.CidadeDto;
 using GestaoDePatrimonios.Exceptions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestaoPatrimonios.Controllers
+namespace GestaoDePatrimonios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,6 +1,7 @@
 ﻿using GestaoDePatrimonios.Applications.Services;
 using GestaoDePatrimonios.DTOs.LocalizacaoDto;
 using GestaoDePatrimonios.Exceptions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoDePatrimonios.Controllers
@@ -11,7 +12,10 @@ namespace GestaoDePatrimonios.Controllers
     {
         private readonly LocalizacaoService _service;
 
-        public LocalizacaoController(LocalizacaoService service) => _service = service;
+        public LocalizacaoController(LocalizacaoService service)
+        {
+            _service = service;
+        }
 
         [HttpGet]
         public ActionResult<List<ListarLocalizacaoDto>> Listar()
@@ -34,6 +38,11 @@ namespace GestaoDePatrimonios.Controllers
             }
         }
 
+
+
+        /// <summary>
+        /// Mensagem
+        /// </summary>
         [HttpPost]
         public ActionResult Adicionar(CriarLocalizacaoDto dto)
         {
@@ -42,9 +51,8 @@ namespace GestaoDePatrimonios.Controllers
                 _service.Adicionar(dto);
                 return Created();
             }
-            catch (DomainException ex)
-            {
-                return BadRequest(ex.Message);
+            catch (DomainException ex) {
+                 return BadRequest(ex.Message);
             }
         }
 
